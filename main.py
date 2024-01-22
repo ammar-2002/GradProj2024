@@ -165,23 +165,29 @@ if __name__ == '__main__':
     torch.cuda.set_device(args.gpu)
 
     if args.dataset == 'GQA':
+        print("Here1")
         dictionary = Dictionary.load_from_file('/kaggle/input/lxmert-gqa/gqa/dictionary.pkl')
+        print("Here2")
         train_dset = GQAFeatureDataset(args, 'train', dictionary, adaptive=True)
+        print("Here3")
         val_dset = GQAFeatureDataset(args, 'val', dictionary, adaptive=True)
+        print("Here4")
     else:
         raise BaseException("Dataset name not found!")
-
+    print("Here5")
     batch_size = args.batch_size
 
     constructor = 'build_%s' % args.model
     model = getattr(base_model, constructor)(train_dset, args)
     model = model.to(device)
-
+    print("Here6")
     if args.multiGPU:
         model = nn.DataParallel(model)
+    print("Here7")
     optim = None
     epoch = 0
     # load snapshot
+    print("Here8")
     if args.input is not None:
         print('loading %s' % args.input)
         model_data = torch.load(args.input, map_location=device)
