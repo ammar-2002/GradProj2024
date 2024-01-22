@@ -165,7 +165,7 @@ if __name__ == '__main__':
     torch.cuda.set_device(args.gpu)
 
     if args.dataset == 'GQA':
-        dictionary = Dictionary.load_from_file('data/gqa/dictionary.pkl')
+        dictionary = Dictionary.load_from_file('/kaggle/input/lxmert-gqa/gqa/dictionary.pkl')
         train_dset = GQAFeatureDataset(args, 'train', dictionary, adaptive=True)
         val_dset = GQAFeatureDataset(args, 'val', dictionary, adaptive=True)
     else:
