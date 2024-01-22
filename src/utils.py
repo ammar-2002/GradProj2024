@@ -15,12 +15,13 @@ from PIL import Image
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch._six import string_classes
 import sys
 import csv
 import base64
 import math
 import time
+
+string_classes = str
 
 # from dataset import tfidf_from_questions
 # from dataset import Dictionary
